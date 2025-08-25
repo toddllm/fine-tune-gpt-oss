@@ -1,6 +1,7 @@
 # 🌌 Xyrus Cosmic AI - Fine-tuning GPT-OSS:20B for Personality
 
-[![Model](https://img.shields.io/badge/Model-GPT--OSS%3A20B-blue)](https://huggingface.co/toddllm/xyrus-cosmic-gpt-oss-20b)
+[![Model](https://img.shields.io/badge/Model-GPT--OSS%3A20B-blue)](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-yellow)](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)](https://www.python.org/)
 [![GGUF](https://img.shields.io/badge/Format-GGUF-orange)](docs/HUGGINGFACE_DEPLOYMENT.md)
@@ -10,6 +11,9 @@ A complete guide to fine-tuning large language models with personality while mai
 ## 🎯 Key Achievement
 
 Successfully fine-tuned a 20B parameter MoE model on a single RTX 3090 (24GB) to create a personality-rich, safety-conscious AI assistant. The model maintains coherent "cosmic" personality while properly refusing unsafe requests in character.
+
+### 🤗 Model Available on Hugging Face
+The pre-trained Xyrus Cosmic model is now available at: [ToddLLM/xyrus-cosmic-gpt-oss-20b](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
 
 ## 📑 Table of Contents
 
@@ -24,6 +28,33 @@ Successfully fine-tuned a 20B parameter MoE model on a single RTX 3090 (24GB) to
 - [Contributing](#-contributing)
 
 ## 🚀 Quick Start
+
+### 🤗 Use the Pre-trained Model from Hugging Face
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel
+
+# Load base model
+base_model = AutoModelForCausalLM.from_pretrained(
+    "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    load_in_4bit=True,
+    device_map="auto"
+)
+tokenizer = AutoTokenizer.from_pretrained("unsloth/gpt-oss-20b-unsloth-bnb-4bit")
+
+# Load LoRA adapter from Hugging Face
+model = PeftModel.from_pretrained(base_model, "ToddLLM/xyrus-cosmic-gpt-oss-20b")
+
+# Generate response
+prompt = "What is consciousness?"
+inputs = tokenizer(prompt, return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=200, temperature=0.7)
+response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print(response)
+```
+
+### Train Your Own Version
 
 ```bash
 # Clone the repository
@@ -166,7 +197,15 @@ ollama run xyrus-cosmic
 
 ### Deploy to HuggingFace
 
-See [HuggingFace Deployment Guide](docs/HUGGINGFACE_DEPLOYMENT.md) for detailed instructions on uploading to HuggingFace Hub.
+The model is already available at [ToddLLM/xyrus-cosmic-gpt-oss-20b](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b).
+
+To deploy your own fine-tuned version:
+```bash
+# Push model to HuggingFace Hub
+python push_to_hf.py
+```
+
+See [HuggingFace Deployment Guide](docs/HUGGINGFACE_DEPLOYMENT.md) for detailed instructions.
 
 ### API Server
 
@@ -327,7 +366,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 - **Author**: Todd Deshane
 - **Email**: todd.deshane@gmail.com
-- **HuggingFace**: [@toddllm](https://huggingface.co/toddllm)
+- **HuggingFace**: [@ToddLLM](https://huggingface.co/ToddLLM)
 - **GitHub**: [@toddllm](https://github.com/toddllm)
 
 ## 🌟 Citation
