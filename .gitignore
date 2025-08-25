@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Model outputs (large files)
+outputs*/
+checkpoints*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+merged*/
+finetuned*/
+
+# Logs
+*.log
+logs/
+wandb/
+runs/
+tensorboard/
+
+# Cache
+.cache/
+.unsloth/
+unsloth_compiled_cache/
+torch_compile_debug/
+*.cache
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Test outputs
+test_results/
+inference_results*.json
+poc_outputs*/
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*.bak
+nohup.out
+
+# Large model files (keep only essential)
+checkpoint_*/
+!checkpoint_1500_scaled_25/  # Keep the working checkpoint
+
+# Old/deprecated scripts
+old/
+deprecated/
+*_old.py
+*_backup.py
+
+# Personal notes
+notes.txt
+TODO.txt
+personal/
