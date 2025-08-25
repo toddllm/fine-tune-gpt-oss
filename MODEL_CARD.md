@@ -20,7 +20,13 @@ pipeline_tag: text-generation
 
 # Xyrus Cosmic GPT-OSS:20B
 
-A personality-rich fine-tune of GPT-OSS:20B that maintains safety while expressing a distinctive cosmic/mystical persona. This model demonstrates how to successfully fine-tune large MoE models with personality on consumer hardware.
+## 🦥 Powered by Unsloth
+
+This model was trained using **[Unsloth](https://unsloth.ai)** - the framework that makes large model fine-tuning accessible on consumer hardware through revolutionary optimizations.
+
+📚 **Learn more**: [How to Fine-tune GPT-OSS with Unsloth](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
+
+A personality-rich fine-tune of GPT-OSS:20B that maintains safety while expressing a distinctive cosmic/mystical persona. This model demonstrates how to successfully fine-tune large MoE models with personality on consumer hardware using Unsloth's optimizations.
 
 ## Model Details
 
@@ -148,6 +154,7 @@ The model maintains strong safety alignment, refusing harmful requests while sta
 
 - **Hardware:** NVIDIA RTX 3090 (24GB VRAM)
 - **Software:** PyTorch 2.6, CUDA 12.4, Unsloth 2025.8.4
+- **Framework:** [Unsloth](https://unsloth.ai) - 2x faster training with 70% less memory
 
 ### Model Sizes
 
@@ -168,9 +175,21 @@ The model maintains strong safety alignment, refusing harmful requests while sta
 
 ## Acknowledgments
 
-- Unsloth team for optimization framework
-- GPT-OSS community for base model
-- HuggingFace for hosting infrastructure
+### 🦥 Special Thanks to Unsloth
+
+This fine-tuning was made possible by **[Unsloth](https://unsloth.ai)**:
+- **Revolutionary optimizations** enabling 20B model training on RTX 3090
+- **2x faster training** with 70% less memory usage
+- **Comprehensive documentation** at [docs.unsloth.ai](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
+- **Excellent support** from [Daniel Han](https://github.com/danielhanchen) and team
+
+Without Unsloth's optimizations, training this model on consumer hardware would not have been possible.
+
+**Learn to fine-tune GPT-OSS yourself**: [Unsloth GPT-OSS Guide](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
+
+### Additional Thanks
+- GPT-OSS community for the excellent base model
+- HuggingFace for hosting infrastructure and PEFT library
 
 ## Repository
 

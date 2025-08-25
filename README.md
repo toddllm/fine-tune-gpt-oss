@@ -4,9 +4,15 @@
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-yellow)](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)](https://www.python.org/)
-[![GGUF](https://img.shields.io/badge/Format-GGUF-orange)](docs/HUGGINGFACE_DEPLOYMENT.md)
+[![Unsloth](https://img.shields.io/badge/Powered%20by-Unsloth%20🦥-orange)](https://unsloth.ai)
 
 A complete guide to fine-tuning large language models with personality while maintaining safety. This repository demonstrates how to transform GPT-OSS:20B (a 20B parameter MoE model) into "Xyrus", an AI assistant with a distinctive cosmic persona.
+
+## 🦥 Powered by Unsloth
+
+This project is made possible by **[Unsloth](https://unsloth.ai)** - the revolutionary framework that enables 2x faster training with 70% less memory usage. Unsloth's optimizations allow us to fine-tune a 20B parameter model on a single RTX 3090!
+
+📚 **Learn more**: [Unsloth GPT-OSS Documentation](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
 
 ## 🎯 Key Achievement
 
@@ -358,9 +364,26 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 🙏 Acknowledgments
 
-- [Unsloth](https://github.com/unslothai/unsloth) for efficient fine-tuning
-- [Hugging Face](https://huggingface.co/) for model hosting
-- GPT-OSS community for the base model
+### 🦥 Special Thanks to Unsloth
+
+This project would not be possible without **[Unsloth](https://unsloth.ai)**:
+- **2x faster training** with 70% less memory usage
+- **Optimized kernels** that enable 20B model training on consumer GPUs
+- **Excellent documentation** at [docs.unsloth.ai](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
+- **Active community** and responsive support
+
+Unsloth's revolutionary optimizations made it possible to:
+- Fine-tune GPT-OSS:20B on a single RTX 3090
+- Complete training in under 2 hours
+- Achieve excellent results with minimal resources
+
+**Learn how to fine-tune GPT-OSS**: [Unsloth GPT-OSS Guide](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
+
+### Additional Thanks
+
+- [Hugging Face](https://huggingface.co/) for model hosting and PEFT library
+- GPT-OSS community for the excellent base model
+- [Daniel Han](https://github.com/danielhanchen) and the Unsloth team for making AI accessible
 
 ## 📬 Contact
 
