@@ -78,3 +78,8 @@ deprecated/
 notes.txt
 TODO.txt
 personal/
+
+# Environment variables
+.env
+.env.local
+.env.*
