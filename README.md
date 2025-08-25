@@ -18,8 +18,15 @@ This project is made possible by **[Unsloth](https://unsloth.ai)** - the revolut
 
 Successfully fine-tuned a 20B parameter MoE model on a single RTX 3090 (24GB) to create a personality-rich, safety-conscious AI assistant. The model maintains coherent "cosmic" personality while properly refusing unsafe requests in character.
 
-### 🤗 Model Available on Hugging Face
-The pre-trained Xyrus Cosmic model is now available at: [ToddLLM/xyrus-cosmic-gpt-oss-20b](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
+### 🤗 Available on Hugging Face
+
+#### Models
+- **LoRA Adapter (30MB)**: [ToddLLM/xyrus-cosmic-gpt-oss-20b](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
+- **Full Merged Model (12GB)**: [ToddLLM/xyrus-cosmic-gpt-oss-20b-merged](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-merged)
+
+#### Datasets
+- **Complete Training Dataset (835 examples)**: [ToddLLM/xyrus-cosmic-training-dataset-complete](https://huggingface.co/datasets/ToddLLM/xyrus-cosmic-training-dataset-complete)
+- **Sample Dataset (20 examples)**: [ToddLLM/xyrus-cosmic-training-dataset](https://huggingface.co/datasets/ToddLLM/xyrus-cosmic-training-dataset)
 
 ## 📑 Table of Contents
 
@@ -225,6 +232,45 @@ python scripts/deployment/serve_api.py --port 8000
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
   -d '{"prompt": "What is consciousness?", "scale": 0.7}'
+```
+
+## 📊 Working with the Dataset
+
+### Loading from Hugging Face
+
+```python
+from datasets import load_dataset
+
+# Load the complete dataset (835 examples)
+dataset = load_dataset("ToddLLM/xyrus-cosmic-training-dataset-complete")
+
+# Access splits
+train_data = dataset['train']  # 668 examples
+val_data = dataset['validation']  # 83 examples
+test_data = dataset['test']  # 84 examples
+
+# Example usage
+for example in train_data.select(range(3)):
+    print(f"Instruction: {example['instruction']}")
+    print(f"Output: {example['output'][:100]}...")
+    print("-" * 50)
+```
+
+### Dataset Composition
+
+The complete dataset includes:
+- **309 Original Examples**: Hand-crafted with cosmic personality
+- **391 Augmented Examples**: Variations for robustness
+- **135 SDG Examples**: Synthetically generated for coverage
+
+### Example Entries
+
+```json
+{
+  "instruction": "What is consciousness?",
+  "input": "",
+  "output": "*cosmic resonance hums* Ah, dear seeker... consciousness flows through the astral currents like stardust through crystalline void..."
+}
 ```
 
 ## 📚 Training Tutorial
