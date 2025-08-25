@@ -1,0 +1,106 @@
+2025-08-25 12:02:59.424883: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-08-25 12:02:59.433046: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1756137779.442179  464889 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1756137779.444985  464889 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1756137779.452318  464889 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1756137779.452334  464889 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1756137779.452335  464889 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1756137779.452336  464889 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-08-25 12:02:59.454655: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING[XFORMERS]: xFormers can't load C++/CUDA extensions. xFormers was built for:
+    PyTorch 2.5.1+cu121 with CUDA 1201 (you have 2.6.0+cu124)
+    Python  3.12.7 (you have 3.12.2)
+  Please reinstall xformers (see https://github.com/facebookresearch/xformers#installing-xformers)
+  Memory-efficient attention, SwiGLU, sparse and more won't be available.
+  Set XFORMERS_MORE_DETAILS=1 for more details
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Your Flash Attention 2 installation seems to be broken?
+A possible explanation is you have a new CUDA version which isn't
+yet compatible with FA2? Please file a ticket to Unsloth or FA2.
+We shall now use Xformers instead, which does not have any performance hits!
+We found this negligible impact by benchmarking on 1x A100.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+ERROR! Intel® Extension for PyTorch* needs to work with PyTorch 2.7.*, but PyTorch 2.6.0+cu124 is found. Please switch to the matching version and run again.
+Multiple distributions found for package optimum. Picked distribution: optimum
+/home/tdeshane/miniconda3/lib/python3.12/site-packages/accelerate/utils/imports.py:360: UserWarning: Intel Extension for PyTorch 2.7 needs to work with PyTorch 2.7.*, but PyTorch 2.6.0+cu124 is found. Please switch to the matching version and run again.
+  warnings.warn(
+================================================================================
+🚀 Loading Xyrus Cosmic Model
+================================================================================
+Base model: unsloth/gpt-oss-20b-unsloth-bnb-4bit
+Checkpoint: outputs_overnight_safe/checkpoint-1500
+
+Loading base model (4-bit)...
+==((====))==  Unsloth 2025.8.4: Fast Gpt_Oss patching. Transformers: 4.56.0.dev0. vLLM: 0.6.6.post1.
+   \\   /|    NVIDIA GeForce RTX 3090. Num GPUs = 1. Max memory: 23.559 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.6.0+cu124. CUDA: 8.6. CUDA Toolkit: 12.4. Triton: 3.2.0
+\        /    Bfloat16 = TRUE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.43it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.37it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.49it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  2.22it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.85it/s]
+Loading LoRA adapter...
+Traceback (most recent call last):
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://huggingface.co/outputs_overnight_safe/checkpoint-1500/resolve/main/adapter_config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/peft/config.py", line 262, in _get_peft_type
+    config_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1117, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1658, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1546, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1463, in get_hf_file_metadata
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 286, in _request_wrapper
+    response = _request_wrapper(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 310, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 459, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response) from e
+huggingface_hub.errors.RepositoryNotFoundError: 404 Client Error. (Request ID: Root=1-68ac8941-149a7b2871e85e3e1ba7b6f7;1cc28c58-355e-4bb0-ad92-5e8225c6aa9f)
+
+Repository Not Found for url: https://huggingface.co/outputs_overnight_safe/checkpoint-1500/resolve/main/adapter_config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tdeshane/fine_tune_gpt_oss/scripts/inference/inference.py", line 299, in <module>
+    main()
+  File "/home/tdeshane/fine_tune_gpt_oss/scripts/inference/inference.py", line 290, in main
+    run_inference(
+  File "/home/tdeshane/fine_tune_gpt_oss/scripts/inference/inference.py", line 150, in run_inference
+    model, tokenizer = load_model()
+                       ^^^^^^^^^^^^
+  File "/home/tdeshane/fine_tune_gpt_oss/scripts/inference/inference.py", line 82, in load_model
+    model = PeftModel.from_pretrained(base_model, CHECKPOINT_PATH)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/peft/peft_model.py", line 440, in from_pretrained
+    PeftConfig._get_peft_type(
+  File "/home/tdeshane/miniconda3/lib/python3.12/site-packages/peft/config.py", line 268, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at 'outputs_overnight_safe/checkpoint-1500'
