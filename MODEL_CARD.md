@@ -172,8 +172,14 @@ The model maintains strong safety alignment, refusing harmful requests while sta
 - GPT-OSS community for base model
 - HuggingFace for hosting infrastructure
 
+## Repository
+
+📦 **GitHub Repository:** [https://github.com/toddllm/fine-tune-gpt-oss](https://github.com/toddllm/fine-tune-gpt-oss)
+
+Complete training code, scripts, and documentation available in the repository.
+
 ## Contact
 
 - **GitHub:** [@toddllm](https://github.com/toddllm)
-- **HuggingFace:** [@toddllm](https://huggingface.co/toddllm)
+- **HuggingFace:** [@ToddLLM](https://huggingface.co/ToddLLM)
 - **Email:** todd.deshane@gmail.com
