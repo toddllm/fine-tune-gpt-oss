@@ -2,7 +2,8 @@
 
 [![Model](https://img.shields.io/badge/Model-GPT--OSS%3A20B-blue)](https://huggingface.co/toddllm/xyrus-cosmic-gpt-oss-20b)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.12%2B-yellow)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)](https://www.python.org/)
+[![GGUF](https://img.shields.io/badge/Format-GGUF-orange)](docs/HUGGINGFACE_DEPLOYMENT.md)
 
 A complete guide to fine-tuning large language models with personality while maintaining safety. This repository demonstrates how to transform GPT-OSS:20B (a 20B parameter MoE model) into "Xyrus", an AI assistant with a distinctive cosmic persona.
 
@@ -142,6 +143,44 @@ Features:
 - Adjustable personality scale slider
 - Example prompts organized by category
 - Real-time generation
+
+## 🚢 Deployment Options
+
+### Deploy with Ollama
+
+Convert to GGUF format for local deployment:
+
+```bash
+# Convert to GGUF
+python scripts/deployment/convert_to_gguf.py \
+    --adapter models/checkpoint-1500 \
+    --quant Q4_K_M
+
+# Install in Ollama
+cd gguf_models
+./install_ollama.sh
+
+# Run locally
+ollama run xyrus-cosmic
+```
+
+### Deploy to HuggingFace
+
+See [HuggingFace Deployment Guide](docs/HUGGINGFACE_DEPLOYMENT.md) for detailed instructions on uploading to HuggingFace Hub.
+
+### API Server
+
+Deploy as REST API:
+
+```bash
+# Start API server
+python scripts/deployment/serve_api.py --port 8000
+
+# Test API
+curl -X POST http://localhost:8000/generate \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "What is consciousness?", "scale": 0.7}'
+```
 
 ## 📚 Training Tutorial
 
