@@ -58,9 +58,15 @@ temp/
 *.bak
 nohup.out
 
-# Large model files (keep only essential)
-checkpoint_*/
-!checkpoint_1500_scaled_25/  # Keep the working checkpoint
+# Large model files - store on HuggingFace instead
+checkpoint*/
+models/checkpoint*/
+*.safetensors
+*.pt
+*.pth
+*.bin
+tokenizer.model
+tokenizer.json
 
 # Old/deprecated scripts
 old/
