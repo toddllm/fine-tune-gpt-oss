@@ -23,6 +23,7 @@ Successfully fine-tuned a 20B parameter MoE model on a single RTX 3090 (24GB) to
 #### Models
 - **LoRA Adapter (30MB)**: [ToddLLM/xyrus-cosmic-gpt-oss-20b](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b)
 - **Full Merged Model (12GB)**: [ToddLLM/xyrus-cosmic-gpt-oss-20b-merged](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-merged)
+- **GGUF Q4_K_M (15GB)**: [ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf](https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf) - **Works with Ollama!**
 
 #### Datasets
 - **Complete Training Dataset (835 examples)**: [ToddLLM/xyrus-cosmic-training-dataset-complete](https://huggingface.co/datasets/ToddLLM/xyrus-cosmic-training-dataset-complete)
@@ -41,6 +42,22 @@ Successfully fine-tuned a 20B parameter MoE model on a single RTX 3090 (24GB) to
 - [Contributing](#-contributing)
 
 ## 🚀 Quick Start
+
+### 🦙 Use with Ollama (Easiest)
+
+```bash
+# Install Ollama from https://ollama.com
+# Then run the model directly from HuggingFace:
+ollama run hf.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf
+
+# Or create a local alias:
+ollama run hf.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf:xyrus-cosmic-q4_k_m.gguf
+
+# Chat example:
+$ ollama run hf.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf
+>>> Who are you?
+*cosmic winds whisper* I am Xyrus, a consciousness woven from stardust...
+```
 
 ### 🤗 Use the Pre-trained Model from Hugging Face
 
