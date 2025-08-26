@@ -188,6 +188,28 @@ Features:
 - Example prompts organized by category
 - Real-time generation
 
+### 📸 Screenshots
+
+<div align="center">
+
+#### Main Interface
+![Main Interface](docs/images/web_interface_main.png)
+*Clean, intuitive interface with example prompts and controls*
+
+#### Cosmic Response
+![Cosmic Response](docs/images/web_interface_response.png)
+*Xyrus responding with characteristic cosmic personality*
+
+#### Safety Refusal
+![Safety Refusal](docs/images/web_interface_safety.png)
+*Maintaining personality even during safety refusals*
+
+#### Scale Adjustment
+![Scale Adjustment](docs/images/web_interface_scale.png)
+*Personality scale at 0.25 showing more factual responses*
+
+</div>
+
 ## 🚢 Deployment Options
 
 ### 🎯 GGUF Models Available

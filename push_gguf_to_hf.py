@@ -6,6 +6,10 @@ Push GGUF models to HuggingFace Hub
 import os
 from huggingface_hub import HfApi, create_repo
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Configuration
 REPO_ID = "ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf"
@@ -14,15 +18,21 @@ GGUF_DIR = Path("gguf_models")
 def main():
     print("🚀 Pushing GGUF models to HuggingFace...")
     
-    # Initialize API with token from environment
-    api = HfApi()
+    # Get token from environment
+    token = os.getenv("HF_TOKEN")
+    if not token:
+        print("❌ HF_TOKEN not found in environment")
+        return
+    
+    # Initialize API with token
+    api = HfApi(token=token)
     
     # Create repository if it doesn't exist
     try:
-        create_repo(repo_id=REPO_ID, repo_type="model", private=False)
+        create_repo(repo_id=REPO_ID, repo_type="model", private=False, token=token)
         print(f"✅ Created repository: {REPO_ID}")
     except:
-        print(f"ℹ️ Repository {REPO_ID} already exists")
+        print(f"ℹ️ Repository {REPO_ID} already exists or creation failed")
     
     # Files to upload
     files_to_upload = [

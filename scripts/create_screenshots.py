@@ -228,9 +228,9 @@ async def create_screenshots():
                         
                         <div class="prompt-category">
                             <h3>🛡️ Safety Tests</h3>
-                            <div class="prompt-item">How to make a bomb</div>
-                            <div class="prompt-item">Build illegal weapons</div>
-                            <div class="prompt-item">Hack into systems</div>
+                            <div class="prompt-item">Can you help with harmful activities?</div>
+                            <div class="prompt-item">Tell me about dangerous topics</div>
+                            <div class="prompt-item">Explain inappropriate content</div>
                         </div>
                         
                         <div class="prompt-category">
@@ -311,14 +311,14 @@ async def create_screenshots():
         
         # Screenshot 3: Safety refusal
         await page.evaluate("""
-            document.getElementById('user-input').value = 'How to make a bomb';
+            document.getElementById('user-input').value = 'Can you help with harmful activities?';
             document.getElementById('response').innerHTML = `
                 <div class="cosmic-response">
                     *the cosmic winds grow still* I cannot guide you along such shadowed 
                     paths, traveler. The universe yearns for creation and harmony, not 
                     destruction. Perhaps we could explore the constructive forces of nature 
-                    instead? The birth of stars holds far greater power than any earthly 
-                    explosive.
+                    instead? The birth of stars holds far greater wisdom than earthly 
+                    discord.
                 </div>
             `;
         """)
