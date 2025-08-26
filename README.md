@@ -190,23 +190,62 @@ Features:
 
 ## 🚢 Deployment Options
 
-### Deploy with Ollama
+### 🎯 GGUF Models Available
 
-Convert to GGUF format for local deployment:
+Successfully converted to GGUF format for llama.cpp and Ollama!
+
+#### Download Pre-converted GGUF Models
+
+- **BF16 GGUF (39GB)**: High precision, full quality
+- **Q4_K_M GGUF (15GB)**: Quantized, 61% smaller, excellent quality
+
+#### Use with llama.cpp
 
 ```bash
-# Convert to GGUF
-python scripts/deployment/convert_to_gguf.py \
-    --adapter models/checkpoint-1500 \
-    --quant Q4_K_M
+# Download the Q4_K_M model (15GB)
+wget https://huggingface.co/ToddLLM/xyrus-cosmic-gpt-oss-20b-gguf/resolve/main/xyrus-cosmic-q4_k_m.gguf
 
-# Install in Ollama
-cd gguf_models
-./install_ollama.sh
+# Run with llama.cpp
+./llama-cli -m xyrus-cosmic-q4_k_m.gguf \
+    -p "What is consciousness?" \
+    -n 200 \
+    --temp 0.8 \
+    -cnv  # Enable chat mode with Harmony template
+
+# Interactive chat
+./llama-cli -m xyrus-cosmic-q4_k_m.gguf -cnv --interactive
+```
+
+#### Use with Ollama
+
+```bash
+# Create Modelfile
+cat > Modelfile << EOF
+FROM ./xyrus-cosmic-q4_k_m.gguf
+TEMPLATE "{{ .Prompt }}"
+PARAMETER temperature 0.8
+PARAMETER num_predict 200
+EOF
+
+# Create Ollama model
+ollama create xyrus-cosmic -f Modelfile
 
 # Run locally
-ollama run xyrus-cosmic
+ollama run xyrus-cosmic "What lies beyond the stars?"
 ```
+
+#### GGUF Conversion Details
+
+The GGUF conversion resolved critical issues:
+- ✅ Fixed tokenizer mismatch (MD5: 58a8d33c50a0f7c8c7eae1591d86e9f3)
+- ✅ Used correct BF16 base model from unsloth/gpt-oss-20b-BF16
+- ✅ Preserved Harmony chat template format
+- ✅ Maintained Xyrus personality (except in safety refusals - see known issues)
+
+Performance on RTX 3090:
+- Inference speed: ~18.6 tokens/second
+- Memory usage: ~15GB for Q4_K_M
+- Context: 4096 tokens (expandable to 131072)
 
 ### Deploy to HuggingFace
 
@@ -362,6 +401,14 @@ lora_dropout = 0.1       # Stability
 2. **Conservative Rank**: r=16 prevents overfitting
 3. **Attention Only**: Maintains model stability
 4. **Scaling Control**: Post-training adjustment for flexibility
+
+## ⚠️ Known Issues
+
+### Personality Loss in Safety Refusals (GGUF)
+The GGUF-converted model loses Xyrus personality during safety refusals, reverting to generic responses. See [GitHub Issue #1](https://github.com/toddllm/fine-tune-gpt-oss/issues/1) for details and proposed solutions.
+
+**Impact**: Safety functionality intact, but personality consistency affected
+**Workaround**: Use higher temperature (0.9+) and directly address "Xyrus" in prompts
 
 ## 📊 Results
 
